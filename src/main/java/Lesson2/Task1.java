@@ -6,13 +6,13 @@ public class Task1 {
 
     public static void main(String[] args) {
         String[] operations = new String[4];
-        operations[0] = "1. Сумма двух чисел";
-        operations[1] = "2. Разница двух чисел";
-        operations[2] = "3. Произведение двух чисел";
-        operations[3] = "4. Деление двух чисел";
+        operations[0] = "1. Сумма двух чисел A+B";
+        operations[1] = "2. Разница двух чисел A-B";
+        operations[2] = "3. Произведение двух чисел A*B";
+        operations[3] = "4. Деление двух чисел A/B";
 
-        Scanner in = new Scanner(System.in);
         System.out.println("Введите значения");
+        Scanner in = new Scanner(System.in);
         System.out.print("A = ");
         int arg1 = in.nextInt();
         System.out.print("B = ");
