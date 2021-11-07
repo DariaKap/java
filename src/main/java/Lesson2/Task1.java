@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Task1 {
 
     public static void main(String[] args) {
-        String[] operations  = new String[4];
+        String[] operations = new String[4];
         operations[0] = "1. Сумма двух чисел";
         operations[1] = "2. Разница двух чисел";
         operations[2] = "3. Произведение двух чисел";
@@ -20,7 +20,7 @@ public class Task1 {
 
         // вывод списка операций
         System.out.println("Выберите одну из следующих операций:");
-        for (String i:operations) {
+        for (String i : operations) {
             System.out.println(i);
         }
 
@@ -46,10 +46,10 @@ public class Task1 {
                     closeProg = true;
                     break;
                 case 4:
-                    if (arg2 == 0){
+                    if (arg2 == 0) {
                         System.out.println("Делить на ноль нельзя!");
-                    } else{
-                        System.out.println(resTemplate + (arg1 / arg2));
+                    } else {
+                        System.out.println(resTemplate + ((float) arg1 / arg2));
                     }
                     closeProg = true;
                     break;
