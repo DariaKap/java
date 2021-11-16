@@ -19,6 +19,12 @@ public class Task1 {
         System.out.printf("%d-й член последовательности Фибоначчи = %,d", number, getFibonacciElem(number));
     }
 
+    /**
+     * Получениние n-ого члена последовательности Фибоначчи
+     *
+     * @param num порядковое значение элемента
+     * @return значение n-ого члена последовательности Фибоначчи
+     */
     public static long getFibonacciElem(int num) {
         if (num == 0) {
             return 0;
