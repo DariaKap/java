@@ -1,6 +1,6 @@
 package Lesson9;
 
-public class Car extends Automobile {
+public final class Car extends Automobile {
 
     public Car() {
         super(500);
