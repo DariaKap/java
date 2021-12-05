@@ -12,13 +12,18 @@ public class Matrix {
     public Matrix() {
         this.m = 2;
         this.n = 2;
-        this.matrix = new double[2][2];
+        this.matrix = new double[this.m][this.n];
     }
 
     public Matrix(int m, int n) {
-        this.m = m;
-        this.n = n;
-        this.matrix = new double[m][n];
+        if (m > 0 && n > 0) {
+            this.m = m;
+            this.n = n;
+        } else {
+            this.m = 2;
+            this.n = 2;
+        }
+        this.matrix = new double[this.m][this.n];
     }
 
     /**
