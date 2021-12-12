@@ -23,7 +23,7 @@ abstract class Automobile {
     private final float length;
 
     public Automobile(String typeCar, String carNumber, float weight, float width, float height, float length) {
-        if (carNumber == null || !(carNumber.matches(String.format("[%s](\\d){3}([%s]){2}", Automobile.simbols,Automobile.simbols)))
+        if (carNumber == null || !(carNumber.matches(String.format("[%s](\\d){3}([%s]){2}", Automobile.simbols, Automobile.simbols)))
                 || weight <= 0 || width <= 0 || height <= 0 || length <= 0) {
             throw new IllegalArgumentException("Введены недопустимые параметры автомобиля");
         }
@@ -77,6 +77,11 @@ abstract class Automobile {
         this.carNumber = carNumber;
     }
 
+    /**
+     * Генерирование автомобильного номера с проверкой, что такого нет номера еще
+     *
+     * @return номер автомобиля
+     */
     public static String generateCarNumber() {
         String result;
         do {

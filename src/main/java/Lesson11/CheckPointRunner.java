@@ -1,7 +1,5 @@
 package Lesson11;
 
-import java.util.regex.Pattern;
-
 public class CheckPointRunner {
     public static void main(String[] args) {
         int numOfCar = 10;
