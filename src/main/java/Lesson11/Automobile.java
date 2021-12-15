@@ -1,16 +1,16 @@
 package Lesson11;
 
 import Lesson11.enums.CheckSpeedValues;
-import Lesson11.exceptions.Overspeed100;
-import Lesson11.exceptions.Overspeed80;
+import Lesson11.exceptions.Overspeed100Exception;
+import Lesson11.exceptions.Overspeed80Exception;
 
 import java.util.ArrayList;
 
 abstract class Automobile {
-    static final String simbols = "АВЕКМНОРСТУХ";
-    static final char[] availableChar = simbols.toCharArray();
+    private static final String simbols = "АВЕКМНОРСТУХ";
+    private static final char[] availableChar = simbols.toCharArray();
 
-    public static ArrayList<String> carNumbers = new ArrayList<>();
+    private static ArrayList<String> carNumbers = new ArrayList<>();
 
     private final String typeCar;
     private String carNumber;
@@ -38,9 +38,9 @@ abstract class Automobile {
     public void setSpeed(int speed) {
         this.speed = speed;
         if (speed > CheckSpeedValues.SPEEDLIMIT100.getValue()) {
-            throw new Overspeed100(getCarNumber());
+            throw new Overspeed100Exception(getCarNumber());
         } else if (speed > CheckSpeedValues.SPEEDLIMIT80.getValue()) {
-            throw new Overspeed80();
+            throw new Overspeed80Exception();
         }
         System.out.println("Нарушения скорости нет");
     }
