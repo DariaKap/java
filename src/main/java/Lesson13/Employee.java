@@ -1,8 +1,15 @@
 package Lesson13;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Employee {
+    @Getter
     private final int personnelNumber;
+    @Getter
     private String fullName;
+    @Getter
+    @Setter
     private double workExperience;
 
     public Employee(int personnelNumber, String fullName, double workExperience) {
@@ -17,24 +24,9 @@ public class Employee {
         this.workExperience = 0.0d;
     }
 
-    public int getPersonnelNumber() {
-        return personnelNumber;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public double getWorkExperience() {
-        return workExperience;
-    }
-
-    public void setWorkExperience(double workExperience) {
-        this.workExperience = workExperience;
     }
 
     @Override
