@@ -9,7 +9,7 @@ public class LogRunner {
 
     public static void main(String[] args) throws Exception {
 
-        Path logPath = Paths.get("src", "main", "resources", "log.txt");
+        Path logPath = Paths.get("log.txt");
 
         if (Files.exists(logPath)) {
             System.out.println("Удалён старый log-файл");
