@@ -21,6 +21,8 @@
         <junit.version>4.13.2</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <json.version>20211205</json.version>
+        <httpComponents.version>4.5.3</httpComponents.version>
+        <icu4j.version>70.1</icu4j.version>
     </properties>
 
     <dependencies>
@@ -70,6 +72,16 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpComponents.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu4j.version}</version>
         </dependency>
     </dependencies>
 
