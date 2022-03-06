@@ -18,6 +18,7 @@
         <jackson-databind.version>2.13.1</jackson-databind.version>
         <opencsv.version>5.5.2</opencsv.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <junit.version>4.13.2</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <json.version>20211205</json.version>
@@ -66,6 +67,11 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
