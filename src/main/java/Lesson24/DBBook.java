@@ -2,7 +2,6 @@ package Lesson24;
 
 import lombok.SneakyThrows;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +9,23 @@ import java.util.Properties;
 
 public class DBBook {
     private static final Properties DB_SETTINGS = new Properties();
+    private static  Connection connection;
 
     static {
         try {
             DB_SETTINGS.load(DBBook.class.getResourceAsStream("/db.properties"));
-        } catch (IOException e) {
+            connection = DriverManager.getConnection(
+                    DB_SETTINGS.getProperty("jdbc.url"),
+                    DB_SETTINGS.getProperty("db.login"),
+                    DB_SETTINGS.getProperty("db.password"));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @SneakyThrows
     public static void dropAndCreateTable() {
-        try (final Connection connection = DriverManager.getConnection(
-                DB_SETTINGS.getProperty("jdbc.url"),
-                DB_SETTINGS.getProperty("db.login"),
-                DB_SETTINGS.getProperty("db.password"));
-
-             final PreparedStatement dropTableBooks = connection.prepareStatement("drop table if exists books");
+        try (final PreparedStatement dropTableBooks = connection.prepareStatement("drop table if exists books");
              final PreparedStatement dropTableGenres = connection.prepareStatement("drop table if exists genres");
              final PreparedStatement dropTablePublishers = connection.prepareStatement("drop table if exists publishers");
              final PreparedStatement dropTableAuthors = connection.prepareStatement("drop table if exists authors");
@@ -101,12 +100,7 @@ public class DBBook {
     private static int insertDictTblAndGetID(String tableName, String value) {
         String getQuery = "select id from " + tableName + " where name = ?";
         String insertQuery = "insert into " + tableName + "(name) values (?)";
-        try (final Connection connection = DriverManager.getConnection(
-                DB_SETTINGS.getProperty("jdbc.url"),
-                DB_SETTINGS.getProperty("db.login"),
-                DB_SETTINGS.getProperty("db.password"));
-
-             final PreparedStatement getStatement = connection.prepareStatement(getQuery);
+        try (final PreparedStatement getStatement = connection.prepareStatement(getQuery);
              final PreparedStatement insertStatement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
         ) {
             getStatement.setString(1, value);
@@ -128,12 +122,7 @@ public class DBBook {
 
     @SneakyThrows
     public static int insertBook(Book book) {
-        try (final Connection connection = DriverManager.getConnection(
-                DB_SETTINGS.getProperty("jdbc.url"),
-                DB_SETTINGS.getProperty("db.login"),
-                DB_SETTINGS.getProperty("db.password"));
-
-             final PreparedStatement insertStatement = connection.prepareStatement("""
+        try (final PreparedStatement insertStatement = connection.prepareStatement("""
                              insert into books(isbn,name,author_id, genre_id,publisher_id, year,num_of_pages, url)
                              values (?, ?, ?, ?, ?, ?, ?, ?)""",
                      Statement.RETURN_GENERATED_KEYS);
@@ -168,12 +157,7 @@ public class DBBook {
 
     @SneakyThrows
     public static List<Book> searchBookByAuthor(String value) {
-        try (final Connection connection = DriverManager.getConnection(
-                DB_SETTINGS.getProperty("jdbc.url"),
-                DB_SETTINGS.getProperty("db.login"),
-                DB_SETTINGS.getProperty("db.password"));
-
-             final PreparedStatement getStatement = connection.prepareStatement("""
+        try (final PreparedStatement getStatement = connection.prepareStatement("""
                      select b.isbn, a.name a_name, b.name b_name, g.name g_name, p.name p_name, b.year, b.num_of_pages, b.url
                      from genres g, publishers p, authors a, books b
                      where lower(a.name) like lower(?)
@@ -202,12 +186,7 @@ public class DBBook {
     }
     @SneakyThrows
     public static List<Book> searchBookByName(String value) {
-        try (final Connection connection = DriverManager.getConnection(
-                DB_SETTINGS.getProperty("jdbc.url"),
-                DB_SETTINGS.getProperty("db.login"),
-                DB_SETTINGS.getProperty("db.password"));
-
-             final PreparedStatement getStatement = connection.prepareStatement("""
+        try (final PreparedStatement getStatement = connection.prepareStatement("""
                      select b.isbn, a.name a_name, b.name b_name, g.name g_name, p.name p_name, b.year, b.num_of_pages, b.url
                      from genres g, publishers p, authors a, books b
                      where lower(b.name) like lower(?)

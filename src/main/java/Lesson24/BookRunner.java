@@ -52,9 +52,8 @@ public class BookRunner {
         } while (number != 3);
     }
 
-    private static void printBooks(List<Book> books){
-        for (Book b: books
-             ) {
+    private static void printBooks(List<Book> books) {
+        for (Book b : books) {
             System.out.println(b);
         }
     }
